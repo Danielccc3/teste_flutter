@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'views/login_view.dart';
+import 'views/senha_esquecida.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +26,15 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        '/':(context) => const Login(),
+      Senha.routeName: (context) => const Senha(),
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (context) => const Login(),
+        );
+      },
     );
   }
 }
