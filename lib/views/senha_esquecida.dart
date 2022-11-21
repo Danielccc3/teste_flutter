@@ -10,12 +10,13 @@ Widget build (BuildContext context){
   Size size = MediaQuery.of(context).size;
   return MaterialApp(
   home: Scaffold(
+    backgroundColor: Colors.black,
     appBar: AppBar(
       title: const Text('Essa é a sua senha',
-      style: TextStyle(color: Colors.black),),
+      style: TextStyle(color: Colors.white),),
       backgroundColor: Colors.transparent,
       shadowColor: Colors.transparent,
-      leading: BackButton(color: Colors.black, onPressed:() {Navigator.of(context).pushReplacementNamed(
+      leading: BackButton(color: Colors.white, onPressed:() {Navigator.of(context).pushReplacementNamed(
                                     Login.routeName,
                                   );}),
     ),
