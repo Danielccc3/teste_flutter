@@ -2,7 +2,7 @@ class Exame {
   final String id;
   final String nome;
   final String status;
-  final DateTime date;
+  final String date;
 
   Exame({
     required this.id,
