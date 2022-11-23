@@ -1,8 +1,13 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'views/login_view.dart';
 import 'views/senha_esquecida.dart';
 import 'views/menu_view.dart';
+import 'views/finalizado.dart';
+import 'views/camera.dart';
+import 'views/processando.dart';
 
+List<CameraDescription>? cameras;
 void main() {
   runApp(const MyApp());
 }
@@ -30,7 +35,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/':(context) => Login(),
       Senha.routeName: (context) => const Senha(),
-      Menu.routeName: (context) => Menu(),
+      Menu.routeName: (context) => const Menu(),
+      Finalizado.routeName: (context) => const Finalizado(),
+      CameraView.routeName: (context) => const CameraView(title: 'Câmera',),
+      Processando.routeName: (context) => const Processando(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(

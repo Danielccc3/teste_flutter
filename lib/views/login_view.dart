@@ -63,6 +63,7 @@ class Login extends StatelessWidget {
                           if (value != 'teste@hexagon.pro') {
                             return 'Email inválido, tente novamente.';
                           }
+                          return null;
                         }),
                   ),
                   Container(
@@ -86,6 +87,7 @@ class Login extends StatelessWidget {
                           if (value != '1234') {
                             return 'Senha inválida, tente novamente.';
                           }
+                          return null;
                         }),
                   ),
                   Container(

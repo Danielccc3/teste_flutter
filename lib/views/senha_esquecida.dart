@@ -10,7 +10,7 @@ class Senha extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return MaterialApp(
         home: Scaffold(
-      backgroundColor: Color.fromRGBO(206, 206, 206, 1),
+      backgroundColor: const Color.fromRGBO(206, 206, 206, 1),
       appBar: AppBar(
         title: const Text(
           'Essa é a sua senha',
