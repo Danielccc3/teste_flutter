@@ -1,8 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:teste_flutter/views/camera.dart';
 import 'login_view.dart';
 import '../model/exames.dart';
+import 'finalizado.dart';
+import 'processando.dart';
+import 'camera.dart';
 // import '../json/exames.json';
 
 final List<Exame> exames = [
@@ -27,15 +31,17 @@ final List<Exame> exames = [
 ];
 
 class Menu extends StatelessWidget {
-  Menu({Key? key}) : super(key: key);
+  const Menu({Key? key}) : super(key: key);
   static const routeName = '/menu';
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          actions: [IconButton(onPressed: () {Navigator.of(context).pushReplacementNamed(
+                CameraView.routeName);},
+               icon:Icon(Icons.camera_alt))],
           backgroundColor: Colors.lightBlue,
           title: const Text('Exames'),
           leading: BackButton(
@@ -58,8 +64,37 @@ class Menu extends StatelessWidget {
             ),
             Column(
                 children: exames.map((tx) {
-              return GestureDetector(
-                onTap: () => exames,
+              return InkWell(
+                onTap: () => {if (tx.status != 'Finalizado') {showDialog(
+                  context: context, 
+                  builder: (BuildContext context) {
+                  return Container(
+                    margin: EdgeInsets.only(top:200, bottom: 200, left:100, right: 100),
+                          height: MediaQuery.of(context).size.height * 0.55,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                            Radius.circular(25)
+                            ),
+                          ),
+                          child: const Processando(),
+                        );
+                })}
+                else {showDialog(
+                  context: context, 
+                  builder: (BuildContext context) {
+                  return Container(
+                    margin: EdgeInsets.only(top:200, bottom: 200, left:100, right: 100),
+                          height: MediaQuery.of(context).size.height * 0.55,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(
+                            Radius.circular(25)
+                            ),
+                          ),
+                          child: const Finalizado(),
+                        );
+                })}},
                 child: Card(
                   child: Row(
                     children: <Widget>[
@@ -115,12 +150,5 @@ class Menu extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class Finalizado extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(home: Scaffold());
   }
 }
